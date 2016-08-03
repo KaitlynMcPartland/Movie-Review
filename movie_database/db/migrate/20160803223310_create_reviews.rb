@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration
       t.text :body
       t.integer :stars
       t.integer :points
-      t.integer :user_id
+      t.integer :reviewer_id
       t.integer :movie_id
 
       t.timestamps null: false

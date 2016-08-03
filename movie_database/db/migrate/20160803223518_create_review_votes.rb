@@ -3,7 +3,7 @@ class CreateReviewVotes < ActiveRecord::Migration
     create_table :review_votes do |t|
       t.boolean :vote
       t.integer :review_id
-      t.integer :user_id
+      t.integer :voter_id
 
       t.timestamps null: false
     end
