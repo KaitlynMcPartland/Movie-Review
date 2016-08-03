@@ -1,4 +1,4 @@
 class ReviewVote < ActiveRecord::Base
   belongs_to :review
-  belongs_to :voter, class_name: "User"
+  belongs_to :voter, class_name: 'User'
 end
