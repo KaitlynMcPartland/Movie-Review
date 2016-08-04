@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   has_many :movies
 
-  # Unique category in database
-  validates
+  validates :name, :movie_db_id, presence: true
+  validates :name, uniqueness: true
 end

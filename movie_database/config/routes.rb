@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+  resources :categories, only: [:index, :show] do
+    resources :movies, only: [:index, :show]
+  end
+  devise_for :users
+
+  root 'categories#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+  # Ensure you have defined root_url to *something* in your config/routes.rb; for devise setup
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -53,4 +63,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
 end
