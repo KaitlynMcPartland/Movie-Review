@@ -1,18 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(username: 'melaniesarah', email: 'melaniesarah@gmail.com', password_digest:'password')
+# seed category database
+api_key = ENV['MOVIE_API']
+Tmdb::Api.key(api_key)
 
-Category.create(name: 'category name')
+genre_list = Tmdb::Genre.list
 
-Movie.create(title: 'my movie', summary: 'summary here', category_id: 1)
+genre_list['genres'].each do |hash|
+  Category.create(name: hash.fetch('name'), movie_db_id: hash.fetch('id'))
+end
 
-Review.create(title: 'title', body: 'my review', reviewer_id: 1, movie_id: 1)
+categories = Category.all
 
-Comment.create(body: 'the comment body', review_id: 1, commenter_id: 1)
+categories.each do |category|
+  movies = Tmdb::Genre.detail(category.movie_db_id).results
+  movies.each do |movie|
+    Movie.create(title: movie.fetch("original_title"), summary: movie.fetch("overview"), poster_path: movie.fetch("poster_path"), category_id: category.id, release_date: movie.fetch("release_date"))
+  end
+end
 
-ReviewVote.create(review_id: 1, voter_id: 1)
+
+
