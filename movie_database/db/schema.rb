@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20160803223559) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "movie_db_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -33,9 +34,11 @@ ActiveRecord::Schema.define(version: 20160803223559) do
   create_table "movies", force: :cascade do |t|
     t.string   "title"
     t.text     "summary"
+    t.string   "poster_path"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.date     "release_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "review_votes", force: :cascade do |t|
