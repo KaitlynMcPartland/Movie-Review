@@ -3,4 +3,6 @@ class Movie < ActiveRecord::Base
   has_many :reviews
 
   validates :title, :poster_path, :summary, :release_date, :category_id, presence: true
+
+  scope :recent, -> { order('created_at DESC') }
 end
