@@ -1,7 +1,7 @@
 require 'ffaker'
 # seed category database
 # api_key = ENV['MOVIE_API']
-# Tmdb::Api.key('7e1bc9b9f87bb4cf26dd005580b89b52')
+# Tmdb::Api.key(api_key)
 
 # genre_list = Tmdb::Genre.list
 
