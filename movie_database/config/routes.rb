@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show] do
+    resources :movies, only: [:index, :show]
+  end
   devise_for :users
 
   root 'categories#index'
@@ -61,5 +63,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
->>>>>>> cce611b717a97c19bb3965ce07ef70da96ddcde9
+
 end
