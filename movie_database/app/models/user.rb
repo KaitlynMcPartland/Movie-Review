@@ -10,6 +10,15 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :email, presence: true
   validates :password_digest, presence: true
-  validates :rating, presence: true, default: 0
-  validates :status, presence: true, default: "Novice"
+  validates :rating, presence: true
+  validates :status, presence: true
+
+  before_save :set_default_values
+
+  protected
+
+  def set_default_values
+    self.rating ||= 0
+    self.status ||= "Novice"
+  end
 end
