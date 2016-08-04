@@ -2,10 +2,12 @@ class MoviesController < ApplicationController
   def index
 
     if params[:search]
-      p "in params"
       @movies = Movie.search(params[:search])
-    else
-      "found nothing"
+      if @movies.length > 0
+        @movies
+      else
+        @errors = "No movies matched your search criteria"
+      end
     end
   end
 

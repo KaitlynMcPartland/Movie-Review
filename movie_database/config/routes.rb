@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :show]
   end
 
-  resources :movies
+  resources :movies, only: [:index, :show]
 
   resources :users, only: [:index, :show]
 
