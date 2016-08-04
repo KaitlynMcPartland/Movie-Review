@@ -18,7 +18,6 @@ categories.each do |category|
   end
 end
 
-# statuses = ["Novice", "Fan", "Superfan", "Critic"]
 
 10.times do |x|
   User.create!({
@@ -30,4 +29,15 @@ end
   })
 end
 
-#20.times { |x| Review.create!(title: FFaker::Lorem.sentence, body: FFaker::Lorem.paragraph, stars: rand(1..5), reviewer_id: rand(1..10), movie_id: rand(1..Movie.all.count) )}
+
+20.times do |x|
+  Review.create!({
+    title: FFaker::Lorem.sentence,
+    body: FFaker::Lorem.paragraph,
+    stars: rand(1..5),
+    reviewer_id: rand(1..10),
+    movie_id: rand(1..Movie.all.count),
+    points: rand(1..20)
+  })
+end
+
