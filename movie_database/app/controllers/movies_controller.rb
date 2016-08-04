@@ -1,8 +1,9 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+
     if params[:search]
-      @movies = Movie.search(params[:search]).order("created_at DESC")
+      p "in params"
+      @movies = Movie.search(params[:search])
     else
       "found nothing"
     end
