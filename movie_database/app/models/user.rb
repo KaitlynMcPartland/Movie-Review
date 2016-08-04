@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   has_many :comments, foreign_key: 'commenter_id'
 
   validates :username, presence: true
-  validates :email, presence: true
-  validates :password_digest, presence: true
+  # validates :email, presence: true
+  # validates :password_digest, presence: true
   validates :rating, presence: true
   validates :status, presence: true
 
