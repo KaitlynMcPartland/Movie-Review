@@ -3,4 +3,8 @@ class Movie < ActiveRecord::Base
   has_many :reviews
 
   validates :title, :poster_path, :summary, :release_date, :category_id, presence: true
+
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%")
+  end
 end
