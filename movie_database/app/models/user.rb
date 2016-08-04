@@ -7,13 +7,15 @@ class User < ActiveRecord::Base
   has_many :review_votes, foreign_key: 'voter_id'
   has_many :comments, foreign_key: 'commenter_id'
 
+  before_save :set_default_values
+
   validates :username, presence: true
   # validates :email, presence: true
   # validates :password_digest, presence: true
-  validates :rating, presence: true
-  validates :status, presence: true
+  # validates :rating, presence: true
+  # validates :status, presence: true
 
-  before_save :set_default_values
+
 
   protected
 
