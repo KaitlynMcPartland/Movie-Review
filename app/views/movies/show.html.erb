@@ -24,10 +24,10 @@
     </div>
   </div>
 
-    <div class="well">
       <div class="text-right">
       <%= button_to "Leave a review", new_movie_review_path(@movie.id), :class => "btn btn-success", :method => :get %>
       </div>
+    <div class="well">
       <% @movie.reviews.recent.each do |review| %>
       <div class="row">
         <div class="col-md-12">

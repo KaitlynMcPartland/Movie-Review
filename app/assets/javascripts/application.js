@@ -30,7 +30,7 @@ function showForm(event) {
   })
  .done(function(form){
   $('.well').prepend(form)
-  $('input.btn.btn-success').hide();
+  $('.btn-success').hide();
   })
  .fail(function(error){
   console.log('Try Again')
@@ -38,7 +38,6 @@ function showForm(event) {
 };
 
 function postFormListener(event){
-  console.log(event)
   event.preventDefault()
   var url = $('.new_review').attr('action')
   var data = $('form').serialize()
@@ -51,6 +50,8 @@ function postFormListener(event){
   .done(function(data){
     $('form').hide()
     $('.well').prepend(data)
+    $('.button_to').show()
+    $('.btn-success').show()
   })
   .fail(function(error){
     console.log(error)
