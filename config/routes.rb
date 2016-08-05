@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :movies, only: [:index, :show] do
-    resources :reviews, only: [:index, :new]
+    resources :reviews, only: [:index, :new, :create]
   end
 
   resources :users, only: [:index, :show]
