@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-md-9">
     <div class="thumbnail">
-      <img class="img-responsive" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2<%= @movie.poster_path %>" alt="">
+      <img class="img-responsive" src=<%= poster_show(@movie.poster_path) %> alt="">
 
       <div class="caption-full">
         <h4><a href="#"><%= @movie.title %></a></h4>
