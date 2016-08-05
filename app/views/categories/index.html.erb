@@ -11,7 +11,9 @@
   <div class="row">
     <% @categories.each do |category| %>
       <div class="col-md-4 portfolio-item">
+      <a href="<%= category_path(category) %>">
         <img class="img-responsive" src=<%= poster_show(category.movies.sample.poster_path) %> alt="">
+        </a>
           <h3><%= link_to category.name, category_path(category) %></h3>
       </div>
     <% end %>

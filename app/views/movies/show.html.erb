@@ -1,8 +1,8 @@
 <div class="container">
 
-<!-- new attempt -->
+  <!-- new attempt -->
 
-<!-- end of new -->
+  <!-- end of new -->
   <div class="col-md-9">
     <div class="thumbnail">
       <img class="img-responsive" src=<%= poster_show(@movie.poster_path) %> alt="">
@@ -21,16 +21,44 @@
           <span class="glyphicon glyphicon-star-empty"></span>
           4.0 stars
         </p>
+      </div>
     </div>
-  </div>
+    </div>
 
       <div class="text-right">
+
       <%= button_to "Leave a review", new_movie_review_path(@movie.id), :class => "btn btn-success", :method => :get %>
+
       </div>
+
     <div class="well">
       <% @movie.reviews.recent.each do |review| %>
       <div class="row">
-        <div class="col-md-12">
+
+        <div class="vote">
+          <div class="col-md-1 inline">
+          <form class="button.up" action='/review_votes' method="post">
+              <input type="hidden" name="vote[review_id]" value="<%= review.id %>">
+              <input type="hidden" name="vote[voter_id]" value="<%= current_user.id %>">
+              <input type="hidden" name="vote[vote_type]" value="true">
+              <button class="up" type="submit" name="submit">
+                <img src="http://clipartix.com/wp-content/uploads/2016/04/Thumbs-up-thumb-up-clip-art-clipart-2.png" height="20" width="20" alt="upvote_image">
+              </button>
+            </form>
+
+            <form class="button.down" action='/categories/<%= "#{@movie.category_id}" %>/movies/<%= "#{@movie.id}" %>/reviews/vote' method="post">
+              <input type="hidden" name="review_id" value="<%= review.id %>">
+              <input type="hidden" name="vote_type" value="down">
+              <button class="down" type="submit" name="submit">
+                <img src="http://emojipedia-us.s3.amazonaws.com/cache/2f/3c/2f3c03f9e546e4d9652560347210ba9d.png" height="20" width="20" alt="down_vote_image">
+              </button>
+            </form>
+
+
+
+          </div>
+
+        <div class="col-md-11 inline">
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>
@@ -41,10 +69,15 @@
           <span class="pull-right"><%= short_time(review.created_at.to_date) %> days ago</span>
           <p><%= review.title %><br></p>
           <p><%= review.body %><br></p>
+
         </div>
       </div>
       <% end %>
     </div>
+
+  </div>
+
 </div>
+
 
 

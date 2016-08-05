@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :reviews, only: [:index]
 
+  resources :review_votes, only: [:new, :create]
+
 
 
   root 'categories#index'

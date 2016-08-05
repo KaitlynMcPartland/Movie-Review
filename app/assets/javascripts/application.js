@@ -14,10 +14,28 @@
 //= require jquery_ujs
 //= require_tree .
 
+
+
 $(document).ready(function(){
   console.log('ready')
   $('input.btn.btn-success').on('click', showForm);
   $('div.well').on('submit', '#new_review', postFormListener);
+
+  // 1) capture the browser event (vote button click)
+  $("button.up").on("click", function(event) {
+    // 2) prevent the default action
+    event.preventDefault();
+    // 3) capture the link path
+  })
+
+    // 1) capture the browser event (vote button click)
+  $("button.down").on("click", function(event) {
+    // 2) prevent the default action
+    event.preventDefault();
+    // 3) capture the link path or destination on server
+
+  })
+
 });
 
 function showForm(event) {
@@ -58,6 +76,5 @@ function postFormListener(event){
   })
 }
 
-function postedReviewListener(){
 
-}
+
