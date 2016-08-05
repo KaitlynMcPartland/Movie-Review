@@ -1,0 +1,8 @@
+<%= @user.username %><br>
+<div class="container">
+  <% @user.reviews.each do |review| %>
+    <%= review.title %><br>
+    <%= review.body %><br>
+    <%= review.points %> points<br>
+  <% end %>
+</div>

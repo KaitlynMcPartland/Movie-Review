@@ -1,0 +1,33 @@
+<div class="container">
+
+<!-- new attempt -->
+
+<!-- end of new -->
+  <div class="col-md-9">
+    <div class="thumbnail">
+      <img class="img-responsive" src=<%= poster_show(@movie.poster_path) %> alt="">
+
+      <div class="caption-full">
+        <h4><%= @movie.title %></h4>
+        <p><%= @movie.summary %></p>
+      </div>
+      <div class="ratings">
+      <!-- somehow implement this as the rating system -->
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          4.0 stars
+        </p>
+    </div>
+  </div>
+
+    <div class="well">
+    <%= form_for(@review) do |f| %>
+      <%= f.text_field :title %>
+      <%= f.text_body :body %>
+      <%= f.submit "Create" %>
+    <% end %>
+
+    </div>

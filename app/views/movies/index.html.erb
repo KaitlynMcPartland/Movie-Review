@@ -1,0 +1,37 @@
+
+<!-- this is bootstrap -->
+<div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Search Results
+                    <small><%= @movies.length %> results</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+  <% if @errors %>
+  <%= @errors %>
+  <% else %>
+  <% @movies.each do |movie| %>
+        <div class="row">
+            <div class="col-md-7">
+                <a href="<%= movie_path(movie) %>">
+                    <img id="search_img" class="img-responsive" src=<%=poster_show(movie.poster_path) %> alt=":(">
+                </a>
+            </div>
+            <div class="col-md-5">
+            <br><br><br><br>
+                <h2><%= link_to movie.title, movie_path(movie) %></h2>
+                <h3>Release Date: <%= movie.release_date.year %></h3>
+                <p>Genre: <%= movie.category.name %></p>
+            </div>
+            </div>
+            <br><br><br>
+   <% end %>
+  <%end %>
+
+
+
+    </div>
