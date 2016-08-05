@@ -11,6 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
-*.yml
 .env
 .DS_Store

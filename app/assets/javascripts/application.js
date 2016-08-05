@@ -13,3 +13,51 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  console.log('ready')
+  $('input.btn.btn-success').on('click', showForm);
+  $('div.well').on('submit', '#new_review', postFormListener);
+});
+
+function showForm(event) {
+  event.preventDefault();
+  var url = $('form.button_to').attr('action')
+
+  $.ajax({
+    url: url,
+    method: 'GET'
+  })
+ .done(function(form){
+  $('.well').prepend(form)
+  $('.btn-success').hide();
+  })
+ .fail(function(error){
+  console.log('Try Again')
+ })
+};
+
+function postFormListener(event){
+  event.preventDefault()
+  var url = $('.new_review').attr('action')
+  var data = $('form').serialize()
+
+  $.ajax({
+    url: url,
+    method: 'POST',
+    data: data
+  })
+  .done(function(data){
+    $('form').hide()
+    $('.well').prepend(data)
+    $('.button_to').show()
+    $('.btn-success').show()
+  })
+  .fail(function(error){
+    console.log(error)
+  })
+}
+
+function postedReviewListener(){
+
+}

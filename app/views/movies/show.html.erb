@@ -24,11 +24,10 @@
     </div>
   </div>
 
-    <div class="well">
       <div class="text-right">
-      <%= button_to "Leave a review", new_review_path, :class => "btn btn-success", :method => :get %>
-        <!-- <a class="btn btn-success">Leave a Review</a> -->
+      <%= button_to "Leave a review", new_movie_review_path(@movie.id), :class => "btn btn-success", :method => :get %>
       </div>
+    <div class="well">
       <% @movie.reviews.recent.each do |review| %>
       <div class="row">
         <div class="col-md-12">
@@ -46,15 +45,6 @@
       </div>
       <% end %>
     </div>
-
-
-
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 </div>
 
 
