@@ -23,14 +23,19 @@ end
 
 
 10.times do |x|
-  User.create!({
+  user = User.create!({
     username: FFaker::Internet.user_name,
     email: FFaker::Internet.email,
     password: 'abc1234',
-    rating: rand(1..20),
+    rating: rand(1..60),
     status: "Novice"
   })
+  user.update_status
 end
+
+# User.all.each do |user|
+#   user.update_status
+# end
 
 
 2000.times do |x|

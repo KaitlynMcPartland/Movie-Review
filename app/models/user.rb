@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable
   has_many :reviews, foreign_key: 'reviewer_id'
   has_many :review_votes, foreign_key: 'voter_id'
   has_many :comments, foreign_key: 'commenter_id'
@@ -15,6 +15,21 @@ class User < ActiveRecord::Base
   # validates :rating, presence: true
   # validates :status, presence: true
 
+  def update_status
+    if self.rating >= 40
+      self.status = "Gold"
+      self.save
+    elsif self.rating >= 25
+      self.status = "Silver"
+      self.save
+    elsif self.rating >= 10
+      self.status = "Bronze"
+      self.save
+    else
+      self.status = "Novice"
+      self.save
+    end
+  end
 
 
   protected

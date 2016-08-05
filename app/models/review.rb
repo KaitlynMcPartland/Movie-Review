@@ -6,7 +6,6 @@ class Review < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true
   validates :stars, presence: true
-  validates :points, presence: true
   validates :reviewer_id, presence: true
   validates :movie_id, presence: true
 

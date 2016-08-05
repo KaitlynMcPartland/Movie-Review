@@ -23,14 +23,18 @@
         </p>
       </div>
     </div>
+    </div>
+
+      <div class="text-right">
+
+      <%= button_to "Leave a review", new_movie_review_path(@movie.id), :class => "btn btn-success", :method => :get %>
+
+      </div>
 
     <div class="well">
-      <div class="text-right">
-        <%= button_to "Leave a review", new_review_path, :class => "btn btn-success", :method => :get %>
-        <!-- <a class="btn btn-success">Leave a Review</a> -->
-      </div>
       <% @movie.reviews.recent.each do |review| %>
       <div class="row">
+
         <div class="vote">
           <div class="col-md-1 inline">
           <form class="button.up" action='/review_votes' method="post">
@@ -53,22 +57,27 @@
 
 
           </div>
-          <div class="col-md-11 inline">
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-            <%= link_to "#{review.reviewer.username}", user_path(review.reviewer) %>
-            <span class="pull-right"><%= short_time(review.created_at.to_date) %> days ago</span>
-            <p><%= review.title %><br></p>
-            <p><%= review.body %><br></p>
-          </div>
+
+        <div class="col-md-11 inline">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <%= link_to "#{review.reviewer.username}", user_path(review.reviewer) %>
+          <br> Reviewer Status <%= review.reviewer.status %>
+          <span class="pull-right"><%= short_time(review.created_at.to_date) %> days ago</span>
+          <p><%= review.title %><br></p>
+          <p><%= review.body %><br></p>
+
         </div>
       </div>
       <% end %>
     </div>
 
   </div>
+
+</div>
+
 
 
