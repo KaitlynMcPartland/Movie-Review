@@ -1,8 +1,57 @@
-<%= @user.username %><br>
 <div class="container">
-  <% @user.reviews.each do |review| %>
-    <%= review.title %><br>
-    <%= review.body %><br>
-    <%= review.points %> points<br>
-  <% end %>
+
+	<!-- Heading Row -->
+	<div class="row">
+		<div class="col-md-3">
+			<% if @user.status == "Gold" %>
+				<img class="img-responsive img-rounded" src="https://cdn0.iconfinder.com/data/icons/sport-balls/512/gold_medal.png" alt="">
+			<% elsif @user.status == "Silver" %>
+				<img class="img-responsive img-rounded" src="https://userscontent2.emaze.com/images/de83d5fa-2584-4fd6-a8a2-c3df85a908a1/94e277b35b521e8bfef0d840a52aceab.png" alt="">
+			<% elsif @user.status == "Bronse" %>
+				<img class="img-responsive img-rounded" src="https://cdn0.iconfinder.com/data/icons/sport-balls/512/bronze_medal.png" alt="">
+			<% else %>
+				<img class="img-responsive img-rounded" src="https://juancris13.files.wordpress.com/2014/03/muogho0.jpg" alt="">
+			<% end %>
+
+		</div>
+		<!-- /.col-md-8 -->
+		<div class="col-md-6">
+			<h1>Hello <%= @user.username %></h1>
+			<p>Thank you for being a <%= @user.status %> status reviewer.</p>
+			<p>Reviews Written: <%= @user.reviews.count %></p>
+		</div>
+		<!-- /.col-md-4 -->
+	</div>
+	<!-- /.row -->
+
+	<hr>
+
+	<!-- Call to Action Well -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="text-center">
+				<h1>Your reviews</h1>
+				<br>
+				<br>
+			</div>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="container">
+		<% @user.reviews.each do |review| %>
+		<div class="well row">
+			<div class="col-md-10">
+				<h2><%= review.title %></h2>
+				<p><%= review.body %></p>
+				<p><%= review.points %> points</p>
+			</div>
+		</div>
+		<br>
+
+		<% end %>
+	</div>
+	<!-- Content Row -->
+
+
 </div>
