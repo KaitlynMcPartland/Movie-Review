@@ -1,11 +1,16 @@
-<div class="container">
-  <% @category.movies.each do |movie| %>
-    <%= link_to "#{movie.title}", category_movie_path(@category, movie) %><br>
-  <% end %>
-</div>
+<main class="categories-group">
 
-<div class="top-review">
-  <% @category.reviews.recent.limit(10).each do |review| %>
-    <%= link_to "#{review.title}", category_movie_path(@category, review.movie)  %><br>
-  <% end %>
-</div>
+  <div class="container" style="float:left;width:400px">
+  <h2><%= @category.name %></h2>
+    <% @category.movies.each do |movie| %>
+      <%= link_to "#{movie.title}", category_movie_path(@category, movie) %><br>
+    <% end %>
+  </div>
+
+  <div class="top-review">
+  <h2>Top 10 reviews</h2>
+    <% @category.reviews.recent.limit(10).each do |review| %>
+      <%= link_to "#{review.title}", category_movie_path(@category, review.movie)  %><br>
+    <% end %>
+  </div>
+</main>
