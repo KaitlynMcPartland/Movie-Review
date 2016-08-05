@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :movies, only: [:index, :show]
-
   end
-  resources :reviews, only: [:index, :new]
+  resources :reviews, only: [:index]
 
   devise_for :users
 
-  resources :movies, only: [:index, :show]
+  resources :movies, only: [:index, :show] do
+    resources :reviews, only: [:index, :new]
+  end
 
   resources :users, only: [:index, :show]
 
