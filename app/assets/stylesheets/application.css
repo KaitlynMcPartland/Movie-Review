@@ -64,3 +64,13 @@
  }
 
 
+
+ .inline {
+  display: inline-block;
+ }
+
+ .row {
+  margin-bottom:  30px;
+ }
+
+
