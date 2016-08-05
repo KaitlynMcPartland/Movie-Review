@@ -3,11 +3,13 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :show]
   end
 
+  devise_for :users
+
   resources :movies, only: [:index, :show]
 
   resources :users, only: [:index, :show]
 
-  devise_for :users
+
 
   root 'categories#index'
 
