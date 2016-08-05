@@ -14,6 +14,32 @@
  *= require_self
  */
 
+ .category-title {
+    /*margin: auto;*/
+    width: 50%;
+    font-size: 400%;
+    margin-bottom: 3%;
+    margin-left: 36%;
+ }
+
+/* .top-10-title{
+  margin: auto;
+    width: 100%;
+ }*/
+
+ .top-review {
+/*    width:20%;
+   max-height:200%;
+   margin-left:7%;
+   position: fixed;*/
+ }
+
+ .each-review {
+  padding-bottom: 3%;
+  margin-bottom: 3%;
+  border: solid #cecece;
+ }
+
  .categories-group {
   margin-top: -3%;
  }

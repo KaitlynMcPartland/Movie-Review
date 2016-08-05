@@ -2,10 +2,11 @@
 
 
 <!-- TOP 10 REVIEWS -->
+<h2 class="category-title"><%= @category.name %></h2>
   <div class="container" style="float:left;width:71%">
-  <h2><%= @category.name %> Category</h2>
+<h2></h2>
     <% @category.movies.each do |movie| %>
-      <div class="col-md-4" style="max-width: 100%;">
+      <div class="col-md-4">
       <%=link_to( image_tag(poster_show(movie.poster_path)), category_movie_path(@category, movie)) %>
       </div>
     <% end %>
@@ -13,10 +14,14 @@
 
 
 <!-- LIST OF MOVIE OF THE SAME CATEGORY -->
-  <div class="top-review" style="width:20%; margin-left:75%;position: fixed;">
-  <h2>Top 10 reviews</h2>
+  <div class="top-review" style="width:25%; max-height:200%; margin-left:73%;">
+  <h2 class="top-10-title">Top 10 reviews</h2>
     <% @category.reviews.recent.limit(10).each do |review| %>
-      <%= link_to "#{review.title}", category_movie_path(@category, review.movie)  %><br>
+      <div class="each-review">
+        <%= link_to "#{review.movie.title}", category_movie_path(@category, review.movie) %><br>
+        <%= link_to "#{review.title}", category_movie_path(@category, review.movie)  %><br>
+        Review by: <%= review.reviewer.username  %>
+      </div>
     <% end %>
   </div>
 </main>
