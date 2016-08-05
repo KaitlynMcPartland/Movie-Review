@@ -3,3 +3,9 @@
     <%= link_to "#{movie.title}", category_movie_path(@category, movie) %><br>
   <% end %>
 </div>
+
+<div class="top-review">
+  <% @category.reviews.recent.limit(10).each do |review| %>
+    <%= link_to "#{review.title}", category_movie_path(@category, review.movie)  %><br>
+  <% end %>
+</div>

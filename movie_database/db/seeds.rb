@@ -29,7 +29,8 @@ end
   })
 end
 
-20.times do |x|
+
+2000.times do |x|
   Review.create!({
     title: FFaker::Lorem.sentence,
     body: FFaker::Lorem.paragraph,
@@ -39,3 +40,4 @@ end
     points: rand(1..20)
   })
 end
+

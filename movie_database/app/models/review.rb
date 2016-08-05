@@ -12,6 +12,8 @@ class Review < ActiveRecord::Base
 
   before_save :set_points
 
+  scope :recent, -> { order('created_at DESC') }
+
   protected
 
   def set_points

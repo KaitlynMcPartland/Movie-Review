@@ -5,3 +5,12 @@
 
   Release Date: <%= @movie.release_date %>
 </div>
+
+<div class="top-review">
+  <% @movie.reviews.recent.each do |review| %>
+    <%= review.title %><br>
+    <%= review.body %><br>
+    <%= link_to "#{review.reviewer.username}", user_path(review.reviewer) %><br>
+  <% end %>
+</div>
+
