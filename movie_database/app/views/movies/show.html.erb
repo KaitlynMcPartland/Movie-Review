@@ -1,16 +1,54 @@
 <div class="container">
-  Title: <%= @movie.title %><br><br>
+  <div class="col-md-9">
+    <div class="thumbnail">
+      <img class="img-responsive" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2<%= @movie.poster_path %>" alt="">
 
-  Summary: <%= @movie.summary %><br><br>
+      <div class="caption-full">
+        <h4><a href="#"><%= @movie.title %></a></h4>
+        <p><%= @movie.summary %></p>
+      </div>
+      <div class="ratings">
+        <p class="pull-right"><%= @movie.reviews.count %> reviews</p>
+        <p>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          4.0 stars
+        </p>
+    </div>
+  </div>
 
-  Release Date: <%= @movie.release_date %>
+    <div class="well">
+      <div class="text-right">
+        <a class="btn btn-success">Leave a Review</a>
+      </div>
+      <% @movie.reviews.recent.each do |review| %>
+      <div class="row">
+        <div class="col-md-12">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <%= link_to "#{review.reviewer.username}", user_path(review.reviewer) %>
+          <span class="pull-right"><%= short_time(review.created_at.to_date) %> days ago</span>
+          <p><%= review.title %><br></p>
+          <p><%= review.body %><br></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 </div>
 
-<div class="top-review">
-  <% @movie.reviews.recent.each do |review| %>
-    <%= review.title %><br>
-    <%= review.body %><br>
-    <%= link_to "#{review.reviewer.username}", user_path(review.reviewer) %><br>
-  <% end %>
-</div>
 
