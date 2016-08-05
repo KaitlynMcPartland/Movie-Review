@@ -1,0 +1,10 @@
+<div class="container">
+  <% if @errors %>
+  <%= @errors %>
+  <% else %>
+  <% @movies.each do |movie| %>
+    <%= link_to movie.title, movie_path(movie) %><br>
+  <% end %>
+  <%end %>
+</div>
+
