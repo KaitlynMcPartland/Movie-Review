@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
     end
   end
 
+
   protected
 
   def set_default_values

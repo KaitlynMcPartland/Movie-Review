@@ -38,6 +38,7 @@
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star-empty"></span>
           <%= link_to "#{review.reviewer.username}", user_path(review.reviewer) %>
+          <br> Reviewer Status <%= review.reviewer.status %>
           <span class="pull-right"><%= short_time(review.created_at.to_date) %> days ago</span>
           <p><%= review.title %><br></p>
           <p><%= review.body %><br></p>
