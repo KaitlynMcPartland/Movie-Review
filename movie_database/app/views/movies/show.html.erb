@@ -30,7 +30,24 @@
         <!-- <a class="btn btn-success">Leave a Review</a> -->
       </div>
       <% @movie.reviews.recent.each do |review| %>
-      <div class="row">
+        <div class="row">
+          <div class="vote">
+            <form action='/categories/<%= "#{@movie.category_id}" %>/movies/<%= "#{@movie.id}" %>/reviews/vote' method="post">
+              <input type="hidden" name="review_id" value="<%= review.id %>">
+              <input type="hidden" name="vote_type" value="up">
+              <button class="up" type="submit" name="submit">
+                <img src="http://clipartix.com/wp-content/uploads/2016/04/Thumbs-up-thumb-up-clip-art-clipart-2.png" height="40" width="40" alt="upvote_image">
+              </button>
+            </form>
+            <form action='/categories/<%= "#{@movie.category_id}" %>/movies/<%= "#{@movie.id}" %>/reviews/vote' method="post">
+              <input type="hidden" name="review_id" value="<%= review.id %>">
+              <input type="hidden" name="vote_type" value="down">
+              <button class="down" type="submit" name="submit">
+                <img src="http://emojipedia-us.s3.amazonaws.com/cache/2f/3c/2f3c03f9e546e4d9652560347210ba9d.png" height="40" width="40" alt="down_vote_image">
+              </button>
+            </form>
+           </div>
+        </div>
         <div class="col-md-12">
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>
