@@ -9,6 +9,9 @@ genre_list['genres'].each do |hash|
   Category.create(name: hash.fetch('name'), movie_db_id: hash.fetch('id'))
 end
 
+cat = Category.find(16)
+cat.destroy
+
 categories = Category.all
 
 categories.each do |category|
