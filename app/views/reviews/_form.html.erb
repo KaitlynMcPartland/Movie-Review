@@ -12,7 +12,12 @@
     <% end %>
 
     <%= f.label :title, class: "form-group" %>
+    <%= f.hidden_field :movie_id, :value => @movie.id %>
+    <%= f.hidden_field :reviewer_id, :value => current_user.id %>
+    <%= f.hidden_field :reviewer_id, :value => current_user.id %>
     <%= f.text_field :title, class:"form-control" %><br>
+    <%= f.label :Rating, class: "form-group" %>
+    <%= f.select :stars, [1,2,3,4,5] %>
     <%= f.text_area :body, class: "form-control", rows: 5 %>
     <%= f.submit "Submit review", class: "btn btn-primary" %><br>
   <% end %><br>

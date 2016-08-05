@@ -38,6 +38,21 @@ function showForm(event) {
 };
 
 function postFormListener(event){
-    event.preventDefault()
-    console.log(event)
+  console.log(event)
+  event.preventDefault()
+  var url = $('.new_review').attr('action')
+  var data = $('form').serialize()
+
+  $.ajax({
+    url: url,
+    method: 'POST',
+    data: data
+  })
+  .done(function(data){
+    $('form').hide()
+    $('.well').prepend(data)
+  })
+  .fail(function(error){
+    console.log(error)
+  })
 }
