@@ -1,0 +1,19 @@
+<div class="field">
+  <%= form_for(@review) do |f| %>
+    <% if @review.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :title, class: "form-group" %>
+    <%= f.text_field :title, class:"form-control" %><br>
+    <%= f.text_area :body, class: "form-control", rows: 5 %>
+    <%= f.submit "Submit review", class: "btn btn-success" %><br>
+  <% end %>
+</div>
