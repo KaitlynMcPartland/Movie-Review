@@ -13,3 +13,4 @@
 /tmp
 *.yml
 .env
+.DS_Store
