@@ -8,6 +8,11 @@ genre_list = Tmdb::Genre.list
 genre_list['genres'].each do |hash|
   Category.create(name: hash.fetch('name'), movie_db_id: hash.fetch('id'))
 end
+cat = Category.find(16)
+cat.destroy
+
+cat = Category.find(16)
+cat.destroy
 
 categories = Category.all
 
@@ -20,14 +25,19 @@ end
 
 
 10.times do |x|
-  User.create!({
+  user = User.create!({
     username: FFaker::Internet.user_name,
     email: FFaker::Internet.email,
     password: 'abc1234',
-    rating: rand(1..20),
+    rating: rand(1..60),
     status: "Novice"
   })
+  user.update_status
 end
+
+# User.all.each do |user|
+#   user.update_status
+# end
 
 
 2000.times do |x|
